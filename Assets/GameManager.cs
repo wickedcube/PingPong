@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 	public Transform player;
-	public CountdownTimer countdownTimer;
+	///public CountdownTimer countdownTimer;
 	[HideInInspector]
 	public int current_level = 0;
 	public int[] time_per_level;
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
 		if (current_level == time_per_level.Length)
 			yield break;
 
-		countdownTimer.StartCountdown(time_per_level[current_level]);
+		//countdownTimer.StartCountdown(time_per_level[current_level]);
 		yield return new WaitForSeconds(time_per_level[current_level]);
 		
 		current_level++;
