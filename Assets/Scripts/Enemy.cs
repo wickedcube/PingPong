@@ -10,10 +10,12 @@ public class Enemy : MonoBehaviour
 	Vector3 to_vec;
 	Vector3 dir_vec;
 	public Vector3 bounce_point;
+	public Vector3 final_point;
 	public Vector3 drone_pos;
 	public bool is_going_to_bounce;
 	public bool is_going_to_player;
 	public bool is_going_to_drone;
+	public InputManager.SwipeType swipeType;
 	void Start () {
 		velocity_mul = Random.Range(1f,2f);
 		time_slow_mul = 1f;
@@ -30,7 +32,7 @@ public class Enemy : MonoBehaviour
 			is_going_to_bounce = false;
 			is_going_to_player = true;
 			velocity_mul = Random.Range(0.1f, 0.3f);
-			to_vec = GameManager.instance.player.position;
+			to_vec = final_point;
 			dir_vec = to_vec - transform.position;
 		}
 		else if (other.gameObject.CompareTag("DebrisWall"))

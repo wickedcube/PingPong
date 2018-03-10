@@ -78,7 +78,10 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < InputManager.instance.list_swipe_type.Count; i++)
 		{
 			Transform last_enemy = EnemySpawner.instance.OldestEnemyAlive();
-			last_enemy.GetComponent<Enemy>().Deflect();
+
+			if(last_enemy.GetComponent<Enemy>().swipeType == InputManager.instance.list_swipe_type[i])
+				last_enemy.GetComponent<Enemy>().Deflect();
+
 		}
 		StartCoroutine(EnemySpawner.instance.EnemySpawnCoroutine());
 	}
