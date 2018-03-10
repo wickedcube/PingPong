@@ -8,8 +8,8 @@ public class InputManager : MonoBehaviour {
 	public enum SwipeType { Left, Right, Staright };
 	public List<SwipeType> list_swipe_type = new List<SwipeType>();
 	Vector2 init_touch_position;
-	float input_y_delta;
-	float input_x_delta;
+	float input_y_delta = 0.2f;
+	float input_x_delta = 0.2f;
 
 	void Awake() {
 		instance = this;

@@ -12,12 +12,14 @@ public class TimeController : MonoBehaviour {
 		instance = this;
 	}
 
-	public void SlowDownTime(float time_to_slow_down) {
-		StartCoroutine(SlowDownTimeCoroutine(time_to_slow_down));
-	}
-
-	IEnumerator SlowDownTimeCoroutine(float time_to_slow_down) {
-		
+	public void SlowDownTime() {
+		foreach (var item in EnemySpawner.instance.enemy_queue)
+		{
+			if (item != null)
+			{
+				item.GetComponent<Enemy>().time_slow_mul = 0.1f;
+			}
+		}
 	}
 
 

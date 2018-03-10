@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour {
 		if (instance == null)
 		{
 			instance = this;
-			DontDestroyOnLoad(gameObject);
 		}
 		else
 		{
@@ -58,6 +57,9 @@ public class GameManager : MonoBehaviour {
 	IEnumerator HandleAdrenalineMode() {
 		yield return new WaitForSeconds(10f);
 		is_in_adreanaline_mode = true;
+		Debug.Log("Adrenaline mode enabled");
+		TimeController.instance.SlowDownTime();
+		EnemySpawner.instance.SpawnAdrenalineEnemies();
 		yield return new WaitForSeconds(3f);
 		is_in_adreanaline_mode = false;
 	}

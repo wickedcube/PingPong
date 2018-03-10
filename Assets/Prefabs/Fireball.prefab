@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d38304a6ffefbc4bbe2bb5ab05a7c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounce_point: {x: 0, y: 0, z: 0}
+  drone_pos: {x: 0, y: 0, z: 0}
 --- !u!198 &198225150989221960
 ParticleSystem:
   m_ObjectHideFlags: 1

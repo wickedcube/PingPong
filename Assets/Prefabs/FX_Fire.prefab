@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounce_point: {x: 0, y: 0, z: 0}
+  drone_pos: {x: 0, y: 0, z: 0}
 --- !u!198 &198348543392830334
 ParticleSystem:
   m_ObjectHideFlags: 1

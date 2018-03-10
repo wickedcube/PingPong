@@ -17,7 +17,6 @@ public class EnemySpawner : MonoBehaviour {
 		if (instance == null)
 		{
 			instance = this;
-			DontDestroyOnLoad(gameObject);
 		}
 		else
 		{
@@ -46,6 +45,10 @@ public class EnemySpawner : MonoBehaviour {
 
 	public void DequeueLastEnemy() {
 		enemy_queue.Dequeue();
+	}
+
+	public void SpawnAdrenalineEnemies() {
+		StartCoroutine(SpawnAdrenalineModeEnemies());
 	}
 
 	public IEnumerator SpawnAdrenalineModeEnemies() {
