@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeController : MonoBehaviour {
 
 	public static TimeController instance;
+	public bool can_slow_time = false;
 
 
 	void Awake() {
@@ -16,13 +17,6 @@ public class TimeController : MonoBehaviour {
 	}
 
 	IEnumerator SlowDownTimeCoroutine(float time_to_slow_down) {
-		float timer = time_to_slow_down;
-		while (timer>0) {
-			Time.timeScale = 0.5f*(1 + (timer / time_to_slow_down));
-			timer -= Time.unscaledDeltaTime;
-			yield return new WaitForSecondsRealtime(Time.unscaledDeltaTime);
-		}
-
-		Time.timeScale = 1f;
+		
 	}
 }

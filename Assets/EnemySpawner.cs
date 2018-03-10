@@ -35,12 +35,30 @@ public class EnemySpawner : MonoBehaviour {
 		enemy_instance.position = enemy_spawn_pos_arr[Random.Range(0, enemy_spawn_pos_arr.Length)].transform.position;
 		enemy_instance.GetComponent<Enemy>().bounce_point = enemy_bounce_point_arr[Random.Range(0,enemy_bounce_point_arr.Length)].position;
 		enemy_instance.GetComponent<Enemy>().drone_pos = transform.root.position;
-		//enemy_queue.Enqueue(enemy_instance);
+		enemy_queue.Enqueue(enemy_instance);
 		enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
 	}
 
 
 	public Transform OldestEnemyAlive() {
 		return enemy_queue.Dequeue();
+	}
+
+	public void DequeueLastEnemy() {
+		enemy_queue.Dequeue();
+	}
+
+	public IEnumerator SpawnAdrenalineModeEnemies() {
+		StopCoroutine(enemy_spawn_coroutine);
+		for (int i = 0; i < 4; i++)
+		{
+			Transform enemy_instance = Instantiate(enemy_prefabs_arr[Random.Range(0, enemy_prefabs_arr.Length)]);
+			enemy_instance.position = enemy_spawn_pos_arr[Random.Range(0, enemy_spawn_pos_arr.Length)].transform.position;
+			enemy_instance.GetComponent<Enemy>().bounce_point = enemy_bounce_point_arr[Random.Range(0, enemy_bounce_point_arr.Length)].position;
+			enemy_instance.GetComponent<Enemy>().drone_pos = transform.root.position;
+			enemy_queue.Enqueue(enemy_instance);
+			yield return new WaitForSeconds(0.5f);
+		}
+		enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
 	}
 }
