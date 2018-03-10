@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour {
 		enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
 	}
 
-	IEnumerator EnemySpawnCoroutine() {
+	public IEnumerator EnemySpawnCoroutine() {
 		yield return new WaitForSeconds(enemy_spawn_per_second_per_level[GameManager.instance.current_level]);
 		Transform enemy_instance = Instantiate(enemy_prefabs_arr[Random.Range(0,enemy_prefabs_arr.Length)]);
 		enemy_instance.position = enemy_spawn_pos_arr[Random.Range(0, enemy_spawn_pos_arr.Length)].transform.position;
@@ -59,6 +59,6 @@ public class EnemySpawner : MonoBehaviour {
 			enemy_queue.Enqueue(enemy_instance);
 			yield return new WaitForSeconds(0.5f);
 		}
-		enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
+		//enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
 	}
 }

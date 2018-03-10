@@ -80,5 +80,6 @@ public class GameManager : MonoBehaviour {
 			Transform last_enemy = EnemySpawner.instance.OldestEnemyAlive();
 			last_enemy.GetComponent<Enemy>().Deflect();
 		}
+		StartCoroutine(EnemySpawner.instance.EnemySpawnCoroutine());
 	}
 }
