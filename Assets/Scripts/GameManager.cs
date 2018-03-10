@@ -72,5 +72,11 @@ public class GameManager : MonoBehaviour {
 				item.GetComponent<Enemy>().time_slow_mul = 1f;
 			}
 		}
+
+		for (int i = 0; i < InputManager.instance.list_swipe_type.Count; i++)
+		{
+			Transform last_enemy = EnemySpawner.instance.OldestEnemyAlive();
+			last_enemy.GetComponent<Enemy>().Deflect();
+		}
 	}
 }

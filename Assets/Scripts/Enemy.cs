@@ -33,16 +33,16 @@ public class Enemy : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-		Deflect();
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			Deflect();
+		}
 		transform.Translate(dir_vec * velocity_mul * time_slow_mul * Time.deltaTime);
 	}
 
-	void Deflect() {
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
+	public void Deflect() {
 			dir_vec = drone_pos - transform.position;
 			Destroy(gameObject, 10f);
-		}
 	}
 
 	void OnDestory() {

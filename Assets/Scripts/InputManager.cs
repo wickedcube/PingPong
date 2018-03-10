@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour {
 
-	enum SwipeType { Left, Right, Staright };
-	List<SwipeType> list_swipe_type = new List<SwipeType>();
+	public static InputManager instance;
+	public enum SwipeType { Left, Right, Staright };
+	public List<SwipeType> list_swipe_type = new List<SwipeType>();
 	Vector2 init_touch_position;
 	float input_y_delta;
 	float input_x_delta;
+
+	void Awake() {
+		instance = this;
+  }
 	// Update is called once per frame
 	void Update () {
 		if (GameManager.instance.is_in_adreanaline_mode)
@@ -33,7 +38,7 @@ public class InputManager : MonoBehaviour {
 				init_touch_position = new Vector3(-1f, -1f);
 				if (list_swipe_type.Count == 4)
 				{
-					GameManager.instance.is_in_adreanaline_mode = false;
+					GameManager.instance.ResetHandleAdrenalineCoroutine();
 				}
       }
 		}

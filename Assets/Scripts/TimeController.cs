@@ -19,4 +19,9 @@ public class TimeController : MonoBehaviour {
 	IEnumerator SlowDownTimeCoroutine(float time_to_slow_down) {
 		
 	}
+
+
+	public void ResetTimerOnEnemies() {
+
+	}
 }
