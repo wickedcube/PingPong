@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(10f);
 		is_in_adreanaline_mode = true;
 		Debug.Log("Adrenaline mode enabled");
+		yield return StartCoroutine(EnemySpawner.instance.SpawnAdrenalineModeEnemies());
 		TimeController.instance.SlowDownTime();
-		EnemySpawner.instance.SpawnAdrenalineEnemies();
-		yield return new WaitForSeconds(3f);
-		is_in_adreanaline_mode = false;
+		//yield return new WaitForSeconds(3f);
+		//is_in_adreanaline_mode = false;
 	}
 
 	public void ResetHandleAdrenalineCoroutine()

@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
 		time_slow_mul = 1f;
 		to_vec = bounce_point;
 		is_going_to_bounce = true;
+		dir_vec = to_vec - transform.position;
   }
 
 	void OnTriggerEnter	(Collider other)
@@ -31,7 +32,6 @@ public class Enemy : MonoBehaviour
 			velocity_mul = Random.Range(0.1f, 0.3f);
 			to_vec = GameManager.instance.player.position;
 			dir_vec = to_vec - transform.position;
-			dir_vec *= 10f;
 		}
 		else if (other.gameObject.CompareTag("DebrisWall"))
 		{
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
 			Deflect();
 		}
 
-		if(is_going_to_bounce || is_going_to_drone)
+		if(is_going_to_player || is_going_to_drone)
 			dir_vec = (to_vec - transform.position)*3f;
 
 
@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
 
 	public void Deflect() {
 			to_vec = drone_pos;
+			dir_vec = to_vec - transform.position;
 			Destroy(gameObject, 10f);
 	}
 

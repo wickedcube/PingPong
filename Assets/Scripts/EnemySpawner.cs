@@ -47,11 +47,8 @@ public class EnemySpawner : MonoBehaviour {
 		enemy_queue.Dequeue();
 	}
 
-	public void SpawnAdrenalineEnemies() {
-		StartCoroutine(SpawnAdrenalineModeEnemies());
-	}
-
 	public IEnumerator SpawnAdrenalineModeEnemies() {
+
 		StopCoroutine(enemy_spawn_coroutine);
 		for (int i = 0; i < 4; i++)
 		{
