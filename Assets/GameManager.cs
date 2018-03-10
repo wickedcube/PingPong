@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
+	public Transform player;
+	public CountdownTimer countdownTimer;
 	[HideInInspector]
 	public int current_level = 0;
-	[HideInInspector]
 	public int[] time_per_level;
 	Coroutine level_update_coroutine;
 	void Awake() {
@@ -28,7 +29,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator UpdateLevelTime() {
+
+		if (current_level == time_per_level.Length)
+			yield break;
+
+		countdownTimer.StartCountdown(time_per_level[current_level]);
 		yield return new WaitForSeconds(time_per_level[current_level]);
+		
 		current_level++;
 		level_update_coroutine = StartCoroutine(UpdateLevelTime());
 	}

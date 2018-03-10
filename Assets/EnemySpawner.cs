@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour {
 	public Transform[] enemy_spawn_pos_arr;
 	public int[] enemy_spawn_per_second_per_level;
 	public Coroutine enemy_spawn_coroutine;
-	public Queue<Transform> enemy_queue;
+	public Queue<Transform> enemy_queue = new Queue<Transform>();
 	public Transform[] enemy_prefabs_arr;
 
 	void Awake() {
