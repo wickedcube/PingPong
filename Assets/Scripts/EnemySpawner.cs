@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 	public Queue<Transform> enemy_queue = new Queue<Transform>();
 	public Transform[] enemy_prefabs_arr;
 	public Transform[] final_pos_arr;
+	public int total_enemies_spawned = 0;
 
 	void Awake() {
 		if (instance == null)
@@ -54,12 +55,26 @@ public class EnemySpawner : MonoBehaviour {
 		}
 
 		enemy_queue.Enqueue(enemy_instance);
-		enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
+		total_enemies_spawned++;
+
+
+		if (GameManager.instance.adrenaline_milestone_index < GameManager.instance.adrenaline_milestones.Length && total_enemies_spawned == GameManager.instance.adrenaline_milestones[GameManager.instance.adrenaline_milestone_index])
+		{
+			StartCoroutine(GameManager.instance.HandleAdrenalineMode());
+			GameManager.instance.adrenaline_milestone_index++;
+		}
+		else
+		{
+			enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
+		}
 	}
 
 
 	public Transform OldestEnemyAlive() {
-		return enemy_queue.Dequeue();
+		if (enemy_queue.Count != 0)
+			return enemy_queue.Dequeue();
+		else
+			return null;
 	}
 
 	public void DequeueLastEnemy() {
@@ -79,5 +94,18 @@ public class EnemySpawner : MonoBehaviour {
 			yield return new WaitForSeconds(0.5f);
 		}
 		//enemy_spawn_coroutine = StartCoroutine(EnemySpawnCoroutine());
+	}
+
+	public void CheckAndDeflectLastEnemy(InputManager.SwipeType swipe_type) {
+		Debug.Log(swipe_type);
+		Transform last_enemy = OldestEnemyAlive();
+
+		if (last_enemy == null)
+			return;
+
+		if(last_enemy.GetComponent<Enemy>().swipeType == swipe_type)
+		{
+			last_enemy.GetComponent<Enemy>().Deflect();
+		}
 	}
 }

@@ -8,6 +8,7 @@ TagManager:
   - BouncePoint
   - Drone
   - DebrisWall
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX

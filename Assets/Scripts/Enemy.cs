@@ -40,6 +40,17 @@ public class Enemy : MonoBehaviour
 			GameManager.instance.DecreasePlayerHealth();
 			Destroy(gameObject);
 		}
+		//else if (other.gameObject.CompareTag("PlayerHitBox"))
+		//{
+		//	//Add damage music here
+		//	GameManager.instance.DecreasePlayerHealth();
+		//	Destroy(gameObject);
+		//}
+		else if (other.gameObject.CompareTag("Drone"))
+		{
+			GameManager.instance.DecreaseEnemyHealth();
+			Destroy(gameObject);
+		}
 	}
 
 	// Update is called once per frame

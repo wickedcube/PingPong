@@ -13,6 +13,7 @@ public class TimeController : MonoBehaviour {
 	}
 
 	public void SlowDownTime() {
+		Rotate.rot_mul = 0.1f;
 		foreach (var item in EnemySpawner.instance.enemy_queue)
 		{
 			if (item != null)
