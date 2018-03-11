@@ -30,11 +30,11 @@ public class Enemy : MonoBehaviour
 		{
 			AudioManager.instance.playBallBounceSound();
 			Debug.Log("hit bounce point");
-			is_going_to_bounce = false;
-			is_going_to_player = true;
 			velocity_mul = Random.Range(0.1f, 0.3f);
 			to_vec = final_point;
 			dir_vec = to_vec - transform.position;
+			is_going_to_bounce = false;
+			is_going_to_player = true;
 		}
 		else if (other.gameObject.CompareTag("DebrisWall"))
 		{
@@ -44,6 +44,12 @@ public class Enemy : MonoBehaviour
 		else if (other.gameObject.CompareTag("Drone"))
 		{
 			GameManager.instance.DecreaseEnemyHealth();
+			Destroy(gameObject);
+		}
+		else if (other.gameObject.CompareTag("DroneDefense"))
+		{
+			var explosion_instance = Instantiate(GameManager.instance.explosion_prefab[Random.Range(0, GameManager.instance.explosion_prefab.Length)]);
+			explosion_instance.position = transform.position;
 			Destroy(gameObject);
 		}
 	}

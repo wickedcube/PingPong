@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 	public int[] adrenaline_milestones;
 	public int adrenaline_milestone_index = 0;
 	public bool is_in_adreanaline_mode;
+	public Transform[] explosion_prefab;
 	void Awake() {
 		if (instance == null)
 		{
@@ -49,13 +50,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void DecreaseEnemyHealth() {
-		enemy_health--;
-		if (enemy_health <= 0)
-		{
-			SceneManager.LoadScene(0);
-		}
+		//enemy_health--;
+		//if (enemy_health <= 0)
+		//{
+		//	SceneManager.LoadScene(0);
+		//}
 
-		Destroy(enemy_health_transform.GetChild(enemy_health_transform.childCount - 1).gameObject);  
+		//Destroy(enemy_health_transform.GetChild(enemy_health_transform.childCount - 1).gameObject);  
 	}
 
 	public void DecreasePlayerHealth() {
