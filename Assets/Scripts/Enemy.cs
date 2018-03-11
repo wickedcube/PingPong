@@ -70,10 +70,7 @@ public class Enemy : MonoBehaviour
 	public void Deflect() {
 			to_vec = drone_pos;
 			dir_vec = to_vec - transform.position;
+			EnemySpawner.instance.enemy_list.Remove(transform);
 			Destroy(gameObject, 10f);
-	}
-
-	void OnDestory() {
-		EnemySpawner.instance.DequeueLastEnemy();
 	}
 }

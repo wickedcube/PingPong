@@ -85,7 +85,8 @@ public class GameManager : MonoBehaviour {
 		is_in_adreanaline_mode = false;
 		GameObject.Find("Drone").transform.GetComponent<Animator>().enabled = true;
 		GameObject.Find("AdrenalineRedFlashImage").GetComponent<Animator>().enabled = false;
-		StopCoroutine(handle_adrenaline_coroutine);
+		GameObject.Find("AdrenalineRedFlashImage").GetComponent<UnityEngine.UI.Image>().color = new Color32(0xFF,0x00,0x00,0x00);
+		//StopCoroutine(handle_adrenaline_coroutine);
 		foreach (var item in EnemySpawner.instance.enemy_queue)
 		{
 			if (item != null) {
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour {
 			if (last_enemy == null)
 				break;
 
-			if(last_enemy.GetComponent<Enemy>().swipeType == InputManager.instance.list_swipe_type[i])
+			//if(last_enemy.GetComponent<Enemy>().swipeType == InputManager.instance.list_swipe_type[i])
 				last_enemy.GetComponent<Enemy>().Deflect();
 
 		}

@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour {
 	public Transform[] enemy_bounce_point_arr;
 	public int[] enemy_spawn_per_second_per_level;
 	public Coroutine enemy_spawn_coroutine;
+	public List<Transform> enemy_list = new List<Transform>();
 	public Queue<Transform> enemy_queue = new Queue<Transform>();
 	public Transform[] enemy_prefabs_arr;
 	public Transform[] final_pos_arr;
@@ -55,6 +56,7 @@ public class EnemySpawner : MonoBehaviour {
 		}
 
 		enemy_queue.Enqueue(enemy_instance);
+		enemy_list.Add(enemy_instance);
 		total_enemies_spawned++;
 
 
@@ -71,15 +73,21 @@ public class EnemySpawner : MonoBehaviour {
 
 
 	public Transform OldestEnemyAlive() {
-		if (enemy_queue.Count != 0)
-			return enemy_queue.Dequeue();
-		else
-			return null;
+		//if (enemy_queue.Count != 0)
+		//	return enemy_queue.Dequeue();
+		//else
+		//	return null;
+		if (enemy_list.Count != 0)
+			return enemy_list[0];
+
+		return null;
 	}
 
-	public void DequeueLastEnemy() {
-		enemy_queue.Dequeue();
-	}
+	//public void DequeueLastEnemy() {
+	//	//if (enemy_queue.Count != 0)
+	//	//	enemy_queue.Dequeue();
+	//	enemy_list.RemoveAt(0);
+	//}
 
 	public IEnumerator SpawnAdrenalineModeEnemies() {
 
