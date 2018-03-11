@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator HandleAdrenalineMode() {
 		//yield return new WaitForSeconds(10f);
 		is_in_adreanaline_mode = true;
-		Debug.Log("Adrenaline mode enabled");
+		//Debug.Log("Adrenaline mode enabled");
 		yield return StartCoroutine(EnemySpawner.instance.SpawnAdrenalineModeEnemies());
 		TimeController.instance.SlowDownTime();
 		GameObject.Find("Drone").transform.GetComponent<Animator>().enabled = false;

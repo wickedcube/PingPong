@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour {
 		var enemy_ref = enemy_instance.GetComponent<Enemy>();
 
 		enemy_ref.bounce_point = enemy_bounce_point_arr[Random.Range(0,enemy_bounce_point_arr.Length)].position;
-		enemy_ref.drone_pos = transform.root.position;
+		enemy_ref.drone_pos = GameObject.Find("DroneTarget").transform.position + new Vector3(Random.Range(0, 50), Random.Range(0, 50), Random.Range(0, 50));
 
 		var rand = Random.Range(0,3);
 		enemy_ref.final_point = final_pos_arr[rand].position;
@@ -97,7 +97,28 @@ public class EnemySpawner : MonoBehaviour {
 			Transform enemy_instance = Instantiate(enemy_prefabs_arr[Random.Range(0, enemy_prefabs_arr.Length)]);
 			enemy_instance.position = enemy_spawn_pos_arr[Random.Range(0, enemy_spawn_pos_arr.Length)].transform.position;
 			enemy_instance.GetComponent<Enemy>().bounce_point = enemy_bounce_point_arr[Random.Range(0, enemy_bounce_point_arr.Length)].position;
-			enemy_instance.GetComponent<Enemy>().drone_pos = transform.root.position;
+			enemy_instance.GetComponent<Enemy>().drone_pos = GameObject.Find("DroneTarget").transform.position;
+			var rand = Random.Range(0, 3);
+
+			var enemy_ref = enemy_instance.GetComponent<Enemy>();
+
+			enemy_ref.bounce_point = enemy_bounce_point_arr[Random.Range(0, enemy_bounce_point_arr.Length)].position;
+			enemy_ref.drone_pos = GameObject.Find("DroneTarget").transform.position + new Vector3(Random.Range(0,50), Random.Range(0, 50), Random.Range(0, 50));
+
+			if (rand == 0)
+			{
+				enemy_ref.swipeType = InputManager.SwipeType.Right;
+			}
+			else if (rand == 1)
+			{
+				enemy_ref.swipeType = InputManager.SwipeType.Staright;
+			}
+			else if (rand == 2)
+			{
+				enemy_ref.swipeType = InputManager.SwipeType.Left;
+			}
+
+			enemy_list.Add(enemy_instance);
 			enemy_queue.Enqueue(enemy_instance);
 			yield return new WaitForSeconds(0.5f);
 		}
@@ -105,7 +126,7 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	public void CheckAndDeflectLastEnemy(InputManager.SwipeType swipe_type) {
-		Debug.Log(swipe_type);
+		//Debug.Log(swipe_type);
 		Transform last_enemy = OldestEnemyAlive();
 
 		if (last_enemy == null)

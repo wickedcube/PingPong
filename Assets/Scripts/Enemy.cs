@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("BouncePoint"))
 		{
+			AudioManager.instance.playBallBounceSound();
 			Debug.Log("hit bounce point");
 			is_going_to_bounce = false;
 			is_going_to_player = true;
@@ -40,12 +41,6 @@ public class Enemy : MonoBehaviour
 			GameManager.instance.DecreasePlayerHealth();
 			Destroy(gameObject);
 		}
-		//else if (other.gameObject.CompareTag("PlayerHitBox"))
-		//{
-		//	//Add damage music here
-		//	GameManager.instance.DecreasePlayerHealth();
-		//	Destroy(gameObject);
-		//}
 		else if (other.gameObject.CompareTag("Drone"))
 		{
 			GameManager.instance.DecreaseEnemyHealth();
