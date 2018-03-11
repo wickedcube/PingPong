@@ -45,13 +45,13 @@ public class EnemySpawner : MonoBehaviour {
 
 		if (rand == 0)
 		{
-			enemy_ref.swipeType = InputManager.SwipeType.Left;
+			enemy_ref.swipeType = InputManager.SwipeType.Right;
     }
 		else if (rand == 1) {
 			enemy_ref.swipeType = InputManager.SwipeType.Staright;
 		}
 		else if (rand == 2) {
-			enemy_ref.swipeType = InputManager.SwipeType.Right;
+			enemy_ref.swipeType = InputManager.SwipeType.Left;
 		}
 
 		enemy_queue.Enqueue(enemy_instance);

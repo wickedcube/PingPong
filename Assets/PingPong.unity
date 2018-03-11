@@ -1168,7 +1168,7 @@ Transform:
   m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
   m_Children: []
   m_Father: {fileID: 820482347}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &695696625
 MeshRenderer:
@@ -1795,8 +1795,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1386183910}
-  - {fileID: 1005441999}
   - {fileID: 695696624}
+  - {fileID: 1005441999}
   - {fileID: 740852748}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2027,12 +2027,12 @@ MonoBehaviour:
   - {fileID: 736752996}
   enemy_bounce_point_arr:
   - {fileID: 483850540}
-  enemy_spawn_per_second_per_level: 0a00000006000000030000000400000005000000
+  enemy_spawn_per_second_per_level: 0400000006000000030000000400000005000000
   enemy_prefabs_arr:
   - {fileID: 4310825109526456, guid: 778bdcd062ab4ce47b63678fbeb35964, type: 2}
   final_pos_arr:
-  - {fileID: 1005441999}
   - {fileID: 695696624}
+  - {fileID: 1005441999}
   - {fileID: 740852748}
   total_enemies_spawned: 0
 --- !u!4 &993546609
@@ -2081,7 +2081,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 820482347}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1005442000
 MeshRenderer:
